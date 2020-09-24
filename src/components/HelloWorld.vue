@@ -15,18 +15,18 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <h3>Health:</h3>
+        <h3>Health: {{ target.health }}</h3>
       </div>
     </div>
     <div class="row justify-content-center pt-5">
-      <button type="button" class="btn btn-rounded btn-primary mx-1">
-        Slap
-      </button>
-      <button type="button" class="btn btn-rounded btn-primary mx-1">
-        Kick
-      </button>
-      <button type="button" class="btn btn-rounded btn-primary mx-1">
-        Punch
+      <button
+        type="button"
+        class="btn btn-rounded btn-info mx-1"
+        @click="attackTarget(attack.damage)"
+        v-for="attack in attacks"
+        :key="attack.name"
+      >
+        {{ attack.name }}
       </button>
     </div>
   </div>
@@ -38,7 +38,32 @@ export default {
   props: {
     msg: String,
   },
-  methods: {},
+  data() {
+    return {
+      target: {
+        health: 100,
+      },
+      attacks: [
+        {
+          name: "Slap",
+          damage: "5",
+        },
+        {
+          name: "Kick",
+          damage: 10,
+        },
+        {
+          name: "Punch",
+          damage: 15,
+        },
+      ],
+    };
+  },
+  methods: {
+    attackTarget(damage) {
+      this.target.health -= damage;
+    },
+  },
 };
 </script>
 
