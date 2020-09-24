@@ -16,6 +16,8 @@
     <div class="row">
       <div class="col-12">
         <h3>Health: {{ target.health }}</h3>
+        <h3 v-if="target.health > 0">Still Alive!</h3>
+        <h3 v-else>Youz Dead</h3>
       </div>
     </div>
     <div class="row justify-content-center pt-5">
@@ -27,6 +29,15 @@
         :key="attack.name"
       >
         {{ attack.name }}
+      </button>
+    </div>
+    <div class="row justify-content-center pt-5">
+      <button
+        type="button"
+        class="btn btn-rounded btn-info mx-1"
+        @click="reset()"
+      >
+        Go Again!
       </button>
     </div>
   </div>
@@ -62,6 +73,9 @@ export default {
   methods: {
     attackTarget(damage) {
       this.target.health -= damage;
+    },
+    reset() {
+      this.target.health = 100;
     },
   },
 };
