@@ -13,6 +13,11 @@
         <h1>Welcome to Slappy Slap</h1>
       </div>
     </div>
+    <div class="row">
+      <div class="col-12">
+        <h3>Health:</h3>
+      </div>
+    </div>
     <div class="row justify-content-center pt-5">
       <button type="button" class="btn btn-rounded btn-primary mx-1">
         Slap
